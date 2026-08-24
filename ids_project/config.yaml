@@ -1,0 +1,37 @@
+# =============================================================================
+# IDS Configuration File
+# Toate pragurile și ferestrele de timp sunt configurabile aici.
+# =============================================================================
+
+syn_scan:
+  # Numărul minim de porturi distincte contactate de aceeași sursă
+  # pe aceeași destinație pentru a declanșa o alertă.
+  port_threshold: 20
+  # Fereastra de timp (în secunde) în care se numără porturile.
+  time_window: 10.0
+
+syn_flood:
+  # Numărul minim de pachete SYN fără ACK corespunzător pentru a declanșa alertă.
+  packet_threshold: 100
+  # Fereastra de timp (în secunde).
+  time_window: 5.0
+
+ssh_bruteforce:
+  # Numărul minim de conexiuni TCP către portul 22 dintr-o aceeași sursă.
+  connection_threshold: 10
+  # Fereastra de timp (în secunde).
+  time_window: 30.0
+
+arp_spoof:
+  # Nu există prag numeric — orice schimbare de MAC pentru un IP cunoscut
+  # declanșează o alertă. Parametrul de mai jos controlează dacă prima
+  # detecție a unui IP (fără istoric) generează alertă (false = nu generează).
+  alert_on_first_seen: false
+
+logging:
+  # Afișare alerte în consolă
+  console: true
+  # Scriere alerte în fișier JSON (path relativ la rădăcina proiectului)
+  file: logs/alerts.json
+  # Nivel de severitate minim afișat în consolă: LOW, MEDIUM, HIGH, CRITICAL
+  min_severity: LOW
